@@ -111,7 +111,7 @@
         box-sizing: border-box;
     }
 
-    /* รายการบ้าน (Step 3) - ปรับปรุงใหม่ ไม่มีรูป */
+    /* รายการบ้าน (Step 3) */
     .house-list-section {
         display: none;
         animation: slideUp 0.5s ease;
@@ -129,7 +129,6 @@
         background: white;
         border-radius: 0 0 10px 10px;
     }
-    /* เพิ่มคลาสสำหรับแถวรายการบ้าน */
     .house-item {
         border-bottom: 1px solid #eee;
     }
@@ -156,23 +155,18 @@ function MM_preloadImages() { var d=document; if(d.images){ if(!d.MM_p) d.MM_p=n
 function MM_findObj(n, d) { var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) { d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); if(!x && d.getElementById) x=d.getElementById(n); return x; }
 function MM_swapImage() { var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3) if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];} }
 
-// ฟังก์ชันเลือกประเทศ
 function selectCountry() {
     var countryVal = document.getElementById("countrySelect").value;
-    
     var groups = document.getElementsByClassName('province-group');
     for(var i=0; i<groups.length; i++) {
         groups[i].style.display = 'none';
     }
-    
     hideAllHouses();
-
     if(countryVal) {
         document.getElementById('group-' + countryVal).style.display = 'block';
     }
 }
 
-// ฟังก์ชันเลือกจังหวัด
 function showHouses(listId) {
     hideAllHouses();
     var selectedList = document.getElementById(listId);
@@ -191,7 +185,7 @@ function hideAllHouses() {
 </script>
 </head>
 
-<body onLoad="MM_preloadImages('../Downloads/Compressed/HOme Click/1.png','../Downloads/Compressed/HOme Click/2.png','../Downloads/Compressed/HOme Click/3.png','../Downloads/Compressed/HOme Click/4.png','../Downloads/Compressed/HOme Click/5.png','../Downloads/Compressed/HOme Click/6.png','../Downloads/Compressed/HOme Click/7.png','../Downloads/Compressed/HOme Click/9.png','../Downloads/Compressed/HOme Click/10.png')">
+<body onLoad="MM_preloadImages('Image/HOme Click/1.png','Image/HOme Click/2.png','Image/HOme Click/3.png','Image/HOme Click/4.png','Image/HOme Click/5.png','Image/HOme Click/6.png','Image/HOme Click/7.png','Image/HOme Click/9.png','Image/HOme Click/10.png')">
 
 <center>
 <header>
@@ -203,18 +197,16 @@ function hideAllHouses() {
              <table width="1000" border="1" class="nav-table" style="border: none;">
               <tbody>
                 <tr>
-                  <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../Downloads/Compressed/HOme Click/1.png',1)"><img src="../Downloads/Compressed/HOme/1.png" alt="Home" width="100" height="50" id="Image2"></a></td>
-                  <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../Downloads/Compressed/HOme Click/2.png',1)"><img src="../Downloads/Compressed/HOme/2.png" alt="Sell" width="100" height="50" id="Image3"></a></td>
-                  <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../Downloads/Compressed/HOme Click/3.png',1)"><img src="../Downloads/Compressed/HOme/3.png" alt="Buy" width="100" height="50" id="Image4"></a></td>
-                  <td><a href="Rent.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','../Downloads/Compressed/HOme Click/4.png',1)"><img src="../Downloads/Compressed/HOme/4.png" alt="Rent" width="100" height="50" id="Image5"></a></td>
-                  <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../Downloads/Compressed/HOme Click/5.png',1)"><img src="../Downloads/Compressed/HOme/5.png" alt="Data" width="100" height="50" id="Image11"></a></td>
-                  <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../Downloads/Compressed/HOme Click/6.png',1)"><img src="../Downloads/Compressed/HOme/6.png" alt="Basket" width="100" height="50" id="Image6"></a></td>
-                  <td><a href="Country.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','../Downloads/Compressed/HOme Click/7.png',1)"><img src="../Downloads/Compressed/HOme/7.png" alt="Country" width="100" height="50" id="Image7"></a></td>
-                  
-                  <td><img src="../Downloads/Compressed/HOme Click/8.png" width="100" height="50" alt="Province Active"/></td>
-                  
-                  <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','../Downloads/Compressed/HOme Click/11.png',1)"><img src="../Downloads/Compressed/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
-                  <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../Downloads/Compressed/HOme Click/10.png',1)"><img src="../Downloads/Compressed/HOme/10.png" alt="Payment" width="100" height="50" id="Image10"></a></td>
+                  <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','Image/HOme Click/1.png',1)"><img src="Image/HOme/1.png" alt="Home" width="100" height="50" id="Image2"></a></td>
+                  <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','Image/HOme Click/2.png',1)"><img src="Image/HOme/2.png" alt="Sell" width="100" height="50" id="Image3"></a></td>
+                  <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','Image/HOme Click/3.png',1)"><img src="Image/HOme/3.png" alt="Buy" width="100" height="50" id="Image4"></a></td>
+                  <td><a href="Rent.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','Image/HOme Click/4.png',1)"><img src="Image/HOme/4.png" alt="Rent" width="100" height="50" id="Image5"></a></td>
+                  <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','Image/HOme Click/5.png',1)"><img src="Image/HOme/5.png" alt="Data" width="100" height="50" id="Image11"></a></td>
+                  <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','Image/HOme Click/6.png',1)"><img src="Image/HOme/6.png" alt="Basket" width="100" height="50" id="Image6"></a></td>
+                  <td><a href="Country.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','Image/HOme Click/7.png',1)"><img src="Image/HOme/7.png" alt="Country" width="100" height="50" id="Image7"></a></td>
+                  <td><img src="Image/HOme Click/8.png" width="100" height="50" alt="Province Active"/></td>
+                  <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','Image/HOme Click/11.png',1)"><img src="Image/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
+                  <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','Image/HOme Click/10.png',1)"><img src="Image/HOme/10.png" alt="Payment" width="100" height="50" id="Image10"></a></td>
                 </tr>
               </tbody>
             </table>
@@ -297,7 +289,6 @@ function hideAllHouses() {
                             </div>
                         </div>
                     </div>
-
 
                     <div id="list-bkk" class="house-list-section">
                         <div class="section-header">อสังหาริมทรัพย์: กรุงเทพมหานคร</div>
