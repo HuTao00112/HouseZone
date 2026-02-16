@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>HouseZone - Condo City View (Rent)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+
+    body {
+        font-family: 'Sarabun', 'Segoe UI', Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+        background-image: url('Blue Pastel Minimalist Watercolor Background Instagram Story.png');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    table { border-collapse: collapse; }
+    img { display: block; }
+    a { text-decoration: none; color: inherit; }
+
+
+    .container-box {
+        width: 1070px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+    }
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+
+    .property-status {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #E67E22;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        padding: 40px;
+    }
+
+    /* --- Typography & Elements --- */
+    .property-header h1 {
+        margin: 0;
+        color: #4677EE;
+        font-size: 36px;
+    }
+    .property-location {
+        color: #666;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .property-location i { color: #E74C3C; margin-right: 8px; }
+
+    .section-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .property-description p {
+        color: #555;
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+
+    .features-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+    }
+    .features-list li {
+        font-size: 16px;
+        color: #444;
+    }
+    .features-list i {
+        color: #4677EE;
+        width: 25px;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+
+    .sidebar-card {
+        background-color: #fff9f0; 
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid #ffeebb;
+        position: sticky;
+        top: 20px;
+    }
+    .price-tag {
+        font-size: 32px;
+        font-weight: bold;
+        color: #E67E22; /* สีส้ม */
+        text-align: center;
+        margin-bottom: 5px;
+        display: block;
+    }
+    .price-unit {
+        display: block;
+        text-align: center;
+        color: #777;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .key-details {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+        text-align: center;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .detail-item i {
+        font-size: 24px;
+        color: #4677EE;
+        margin-bottom: 5px;
+    }
+    .detail-item span {
+        display: block;
+        font-size: 14px;
+        color: #666;
+    }
+    .detail-item strong {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .rental-conditions {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+    .rental-conditions strong {
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .btn-contact {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #E67E22; /* สีส้ม */
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+    }
+    .btn-contact:hover {
+        background-color: #d35400;
+        transform: translateY(-2px);
+    }
+    .agent-info {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+
+<script type="text/javascript">
+function MM_swapImgRestore() { var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc; }
+function MM_preloadImages() { var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array(); var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++) if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}} }
+function MM_findObj(n, d) { var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) { d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); if(!x && d.getElementById) x=d.getElementById(n); return x; }
+function MM_swapImage() { var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3) if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];} }
+</script>
+</head>
+
+<body onLoad="MM_preloadImages('../Downloads/Compressed/HOme Click/1.png','../Downloads/Compressed/HOme Click/2.png','../Downloads/Compressed/HOme Click/3.png','../Downloads/Compressed/HOme Click/5.png','../Downloads/Compressed/HOme Click/6.png','../Downloads/Compressed/HOme Click/7.png','../Downloads/Compressed/HOme Click/8.png','../Downloads/Compressed/HOme Click/9.png','../Downloads/Compressed/HOme Click/10.png')">
+
+<center>
+<header>
+    <table width="1070" border="0" cellspacing="0" cellpadding="0" style="box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+      <tbody>
+        <tr>
+          <td align="center" bgcolor="#FFFFFF" style="border-radius: 15px;">
+             <img src="Zone.png" width="1063" height="250" alt="Logo" style="border-radius: 15px 15px 0 0;"/>
+             <table width="1000" border="0" cellpadding="5" class="nav-table">
+             <tbody>
+               <tr>
+                 <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image18','','../Downloads/Compressed/HOme Click/1.png',1)"><img src="../Downloads/Compressed/HOme/1.png" alt="Home" width="100" height="50" id="Image18"></a></td>
+                 <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../Downloads/Compressed/HOme Click/2.png',1)"><img src="../Downloads/Compressed/HOme/2.png" alt="Sell" width="100" height="50" id="Image3" border="0"></a></td>
+                 <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../Downloads/Compressed/HOme Click/3.png',1)"><img src="../Downloads/Compressed/HOme/3.png" width="100" height="50" alt="Buy" id="Image4"/></a></td>
+                 <td><a href="Rent.html"><img src="../Downloads/Compressed/HOme Click/4.png" width="100" height="50" alt="Rent Active" border="0"></a></td>
+                 <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../Downloads/Compressed/HOme Click/5.png',1)"><img src="../Downloads/Compressed/HOme/5.png" alt="Data" width="100" height="50" id="Image11" border="0"></a></td>
+                 <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../Downloads/Compressed/HOme Click/6.png',1)"><img src="../Downloads/Compressed/HOme/6.png" alt="Basket" width="100" height="50" id="Image6" border="0"></a></td>
+                 <td><a href="Country.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','../Downloads/Compressed/HOme Click/7.png',1)"><img src="../Downloads/Compressed/HOme/7.png" alt="Country" width="100" height="50" id="Image7" border="0"></a></td>
+                 <td><a href="Province.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image8','','../Downloads/Compressed/HOme Click/8.png',1)"><img src="../Downloads/Compressed/HOme/8.png" alt="Province" width="100" height="50" id="Image8" border="0"></a></td>
+                 <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','../Downloads/Compressed/HOme Click/11.png',1)"><img src="../Downloads/Compressed/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
+                 <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../Downloads/Compressed/HOme Click/10.png',1)"><img src="../Downloads/Compressed/HOme/10.png" alt="Payment" width="100" height="50" id="Image10" border="0"></a></td>
+               </tr>
+             </tbody>
+           </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</header>
+
+<main>
+    <div class="container-box">
+        <div class="hero-image-container">
+            <div class="property-status">For Rent</div>
+            <img src="House1.jpg" alt="คอนโด City View">
+        </div>
+
+        <div class="content-grid">
+            
+            <div class="main-details">
+                <div class="property-header">
+                    <h1>คอนโด City View (ซิตี้วิว)</h1>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> ใจกลางเมือง, ใกล้รถไฟฟ้า BTS</p>
+                </div>
+
+                <div class="property-description">
+                    <h2 class="section-title">รายละเอียดห้องพัก</h2>
+                    <p>ใช้ชีวิตคนเมืองที่ลงตัวกับ "City View Condo" ห้องชุดตกแต่งครบ พร้อมหิ้วกระเป๋าเข้าอยู่ได้ทันที (Fully Furnished) ตั้งอยู่ใจกลางย่านธุรกิจ เดินทางสะดวกสบายเพียง 5 นาทีจากสถานีรถไฟฟ้า</p>
+                    <p>ภายในห้องแบ่งสัดส่วนอย่างลงตัว ห้องนั่งเล่นกว้างขวาง รับแสงธรรมชาติ พร้อมระเบียงส่วนตัว วิวเมืองที่สวยงาม เหมาะสำหรับคนวัยทำงานหรือนักศึกษาที่ต้องการความสะดวกสบายและความปลอดภัยสูงสุด</p>
+                </div>
+
+                <div class="property-features">
+                     <h2 class="section-title">สิ่งอำนวยความสะดวกในห้อง & โครงการ</h2>
+                     <ul class="features-list">
+                         <li><i class="fas fa-bed"></i> เตียงนอนขนาด 5 ฟุต</li>
+                         <li><i class="fas fa-couch"></i> โซฟาและชุดรับแขก</li>
+                         <li><i class="fas fa-snowflake"></i> เครื่องปรับอากาศ 2 เครื่อง</li>
+                         <li><i class="fas fa-tv"></i> สมาร์ททีวี + ตู้เย็น</li>
+                         <li><i class="fas fa-wifi"></i> ฟรี High Speed Wifi</li>
+                         <li><i class="fas fa-dumbbell"></i> ฟิตเนสและสระว่ายน้ำ</li>
+                         <li><i class="fas fa-key"></i> ระบบ Keycard Access</li>
+                         <li><i class="fas fa-parking"></i> สิทธิ์จอดรถ 1 คัน</li>
+                     </ul>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <span class="price-tag">฿8,500</span>
+                    <span class="price-unit">/ เดือน (รวมค่าส่วนกลาง)</span>
+                    
+                    <div class="key-details">
+                        <div class="detail-item">
+                            <i class="fas fa-bed"></i>
+
+                            <strong>1</strong>
+                            <span>ห้องนอน</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-bath"></i>
+                            <strong>1</strong>
+                            <span>ห้องน้ำ</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <strong>35</strong>
+                            <span>ตร.ม.</span>
+                        </div>
+                    </div>
+
+                    <div class="rental-conditions">
+                        <strong>เงื่อนไขการเช่า:</strong>
+                        <ul>
+                            <li>สัญญาขั้นต่ำ 1 ปี</li>
+                            <li>เงินประกัน 2 เดือน</li>
+                            <li>ค่าเช่าล่วงหน้า 1 เดือน</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-contact" onclick="window.location.href='Basket.html';">
+                        <i class="fas fa-shopping-cart"></i> จอง / นัดดูห้อง
+                    </button>
+
+                    <p class="agent-info">
+                        <i class="fas fa-user-tie"></i> ตัวแทน: HouseZone Rental<br>
+                        Ref ID: HZ-RENT-001
+                    </p>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+</main>
+
+<footer>
+    <table width="1075" border="0">
+        <tbody>
+        <tr>
+            <td align="center"><img src="Zone (1000 x 150 px).png" width="1069" height="150" alt="Footer" style="border-radius: 15px;"/></td>
+        </tr>
+        </tbody>
+    </table>
+</footer>
+
+</center>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HouseZone - Rent</title>
+<style>
+    body {
+        font-family: 'Sarabun', 'Segoe UI', Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+    }
+    table {
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    img {
+        display: block;
+        border-radius: 10px;
+    }
+    .nav-table {
+        background: none;
+        box-shadow: none;
+    }
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #ffffff;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .header-text {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 10px;
+    }
+    li {
+        margin-bottom: 8px;
+    }
+    strong {
+        color: #4677EE;
+    }
+    .price-tag {
+        font-size: 22px; 
+        color: #E74C3C; 
+        font-weight: bold;
+    }
+    .rent-badge {
+        background-color: #2ECC71;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+    .btn-rent {
+        display: inline-block;
+        background-color: #E67E22; 
+        color: white;
+        padding: 5px 15px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: 5px;
+        cursor: pointer;
+        border: none;
+    }
+</style>
+
+<script type="text/javascript">
+function MM_swapImgRestore() { var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc; }
+function MM_preloadImages() { var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array(); var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++) if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}} }
+function MM_findObj(n, d) { var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) { d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); if(!x && d.getElementById) x=d.getElementById(n); return x; }
+function MM_swapImage() { var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3) if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];} }
+
+// ฟังก์ชันเพิ่มลงตะกร้า (จำลอง)
+function addToBasket(itemName) {
+    alert("เพิ่มรายการเช่า '" + itemName + "' ลงในตะกร้าแล้ว!");
+    window.location.href = "Basket.html";
+}
+</script>
+</head>
+
+<body background="Blue Pastel Minimalist Watercolor Background Instagram Story.png" onLoad="MM_preloadImages('../Downloads/Compressed/HOme Click/1.png','../Downloads/Compressed/HOme Click/2.png','../Downloads/Compressed/HOme Click/3.png','../Downloads/Compressed/HOme Click/5.png','../Downloads/Compressed/HOme Click/6.png','../Downloads/Compressed/HOme Click/7.png','../Downloads/Compressed/HOme Click/8.png','../Downloads/Compressed/HOme Click/9.png','../Downloads/Compressed/HOme Click/10.png')">
+
+<center>
+<header>
+    <table width="1070" border="0" cellspacing="0" cellpadding="0" style="box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <tbody>
+      <tr>
+        <td align="center">
+             <img src="เช่า.png" width="1063" height="250" alt="Rent Header" style="border-radius: 15px 15px 0 0; object-fit: cover;"/>
+             <table width="1000" border="0" cellpadding="5" class="nav-table">
+            <tbody>
+              <tr>
+                <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image18','','../Downloads/Compressed/HOme Click/1.png',1)"><img src="../Downloads/Compressed/HOme/1.png" alt="Home" width="100" height="50" id="Image18"></a></td>
+                <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../Downloads/Compressed/HOme Click/2.png',1)"><img src="../Downloads/Compressed/HOme/2.png" alt="Sell" width="100" height="50" id="Image3" border="0"></a></td>
+                <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../Downloads/Compressed/HOme Click/3.png',1)"><img src="../Downloads/Compressed/HOme/3.png" width="100" height="50" alt="Buy" id="Image4"/></a></td>
+                <td><img src="../Downloads/Compressed/HOme Click/4.png" width="100" height="50" alt="Rent Active"/></td>
+                <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../Downloads/Compressed/HOme Click/5.png',1)"><img src="../Downloads/Compressed/HOme/5.png" alt="Data" width="100" height="50" id="Image11" border="0"></a></td>
+                <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../Downloads/Compressed/HOme Click/6.png',1)"><img src="../Downloads/Compressed/HOme/6.png" alt="Basket" width="100" height="50" id="Image6" border="0"></a></td>
+                <td><a href="Country.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','../Downloads/Compressed/HOme Click/7.png',1)"><img src="../Downloads/Compressed/HOme/7.png" alt="Country" width="100" height="50" id="Image7" border="0"></a></td>
+                <td><a href="Province.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image8','','../Downloads/Compressed/HOme Click/8.png',1)"><img src="../Downloads/Compressed/HOme/8.png" alt="Province" width="100" height="50" id="Image8" border="0"></a></td>
+                <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','../Downloads/Compressed/HOme Click/11.png',1)"><img src="../Downloads/Compressed/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
+                <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../Downloads/Compressed/HOme Click/10.png',1)"><img src="../Downloads/Compressed/HOme/10.png" alt="Payment" width="100" height="50" id="Image10" border="0"></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table width="1072" height="100" border="0" bgcolor="#508EEC" style="border-radius: 15px;">
+    <tbody>
+      <tr>
+        <td style="text-align: center; font-size: 40px; color: #0000DA;" class="header-text">
+          "บ้านเช่าคุณภาพ... พร้อมเข้าอยู่ทันที"
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table width="1071" border="0">
+    <tbody>
+      <tr>
+        <td width="1061">
+          <table width="1062" border="0" cellpadding="15">
+            <tbody>
+              <tr style="color: #FFFFFF;">
+                <td width="362" bgcolor="#2ECC71" style="text-align: center; border-radius: 10px 0 0 0;"><strong>เงื่อนไขการเช่า</strong><br>รายเดือน | รายปี</td>
+                <td width="684" bgcolor="#92F2C6" style="text-align: center; font-size: 32px; border-radius: 0 10px 0 0; color: #333;">รายการบ้านเช่าทั้งหมด</td>
+              </tr>
+              
+              <tr class="product-card">
+                <td bgcolor="#f9f9f9" align="center">
+                  <a href="CityViewRent.html"><img src="House1.jpg" width="340" height="243" style="border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/></a>
+                </td>
+                <td bgcolor="#ffffff">
+                  <ul>
+                    <li><span class="rent-badge">ว่างให้เช่า</span> <strong>โครงการ:</strong> คอนโด City View (ซิตี้วิว)</li>
+                    <li><strong>ค่าเช่า:</strong> <span class="price-tag">฿8,500 / เดือน</span></li>
+                    <li><strong>ทำเล:</strong> ใจกลางเมือง / ใกล้รถไฟฟ้า</li>
+                    <li><strong>รายละเอียด:</strong> 1 ห้องนอน 35 ตร.ม. | เฟอร์นิเจอร์ครบ</li>
+                    <li><strong>สัญญา:</strong> ขั้นต่ำ 1 ปี (มัดจำ 2 เดือน)</li>
+                  </ul>
+                  <button onclick="addToBasket('เช่า: คอนโด City View')" class="btn-rent">🛒 สนใจเช่า</button>
+                </td>
+              </tr>
+
+              <tr class="product-card">
+                <td bgcolor="#f9f9f9" align="center"><img src="House2.jpg" width="340" height="250" style="border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+                </td>
+                <td bgcolor="#ffffff">
+                  <ul>
+                    <li><span class="rent-badge">ว่างให้เช่า</span> <strong>โครงการ:</strong> ทาวน์โฮม สุขสบาย</li>
+                    <li><strong>ค่าเช่า:</strong> <span class="price-tag">฿15,000 / เดือน</span></li>
+                    <li><strong>ทำเล:</strong> ชานเมือง / สงบเงียบ</li>
+                    <li><strong>รายละเอียด:</strong> 2 ห้องนอน 2 ห้องน้ำ | เลี้ยงสัตว์ได้</li>
+                    <li><strong>สัญญา:</strong> ขั้นต่ำ 6 เดือน</li>
+                  </ul>
+                  <button onclick="addToBasket('เช่า: ทาวน์โฮม สุขสบาย')" class="btn-rent">🛒 สนใจเช่า</button>
+                </td>
+              </tr>
+
+              <tr class="product-card">
+                <td bgcolor="#f9f9f9" align="center"><img src="House3.jpg" width="340" height="250" style="border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+                </td>
+                <td bgcolor="#ffffff">
+                  <ul>
+                    <li><span class="rent-badge">ว่างให้เช่า</span> <strong>โครงการ:</strong> บ้านเดี่ยว The Grand Garden</li>
+                    <li><strong>ค่าเช่า:</strong> <span class="price-tag">฿35,000 / เดือน</span></li>
+                    <li><strong>ทำเล:</strong> โซนราชพฤกษ์</li>
+                    <li><strong>รายละเอียด:</strong> 3 ห้องนอน 3 ห้องน้ำ | จอดรถ 2 คัน</li>
+                    <li><strong>สัญญา:</strong> ขั้นต่ำ 1 ปี (รวมค่าส่วนกลางแล้ว)</li>
+                  </ul>
+                  <button onclick="addToBasket('เช่า: The Grand Garden')" class="btn-rent">🛒 สนใจเช่า</button>
+                </td>
+              </tr>
+
+              <tr class="product-card">
+                <td bgcolor="#f9f9f9" align="center"><img src="House4.jpg" width="340" height="250" style="border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+                </td>
+                <td bgcolor="#ffffff">
+                  <ul>
+                    <li><span class="rent-badge">โปรโมชั่น</span> <strong>โครงการ:</strong> อพาร์ทเมนท์ ร่มรื่น</li>
+                    <li><strong>ค่าเช่า:</strong> <span class="price-tag">฿4,500 / เดือน</span></li>
+                    <li><strong>ทำเล:</strong> ใกล้มหาวิทยาลัย</li>
+                    <li><strong>รายละเอียด:</strong> ห้องสตูดิโอ | มีแอร์ + Wifi ฟรี</li>
+                    <li><strong>สัญญา:</strong> ขั้นต่ำ 3 เดือน</li>
+                  </ul>
+                  <button onclick="addToBasket('เช่า: อพาร์ทเมนท์ ร่มรื่น')" class="btn-rent">🛒 สนใจเช่า</button>
+                </td>
+              </tr>
+
+              <tr class="product-card">
+                <td bgcolor="#f9f9f9" align="center"><img src="House5.jpg" width="340" height="250" style="border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+                </td>
+                <td bgcolor="#ffffff">
+                  <ul>
+                    <li><span class="rent-badge">Luxury</span> <strong>โครงการ:</strong> พูลวิลล่า ริมหาด</li>
+                    <li><strong>ค่าเช่า:</strong> <span class="price-tag">฿85,000 / เดือน</span></li>
+                    <li><strong>ทำเล:</strong> หัวหิน / ประจวบฯ</li>
+                    <li><strong>รายละเอียด:</strong> 4 ห้องนอน | สระว่ายน้ำส่วนตัว</li>
+                    <li><strong>สัญญา:</strong> เช่าระยะสั้น-ยาว (ราคาต่อรองได้)</li>
+                  </ul>
+                  <button onclick="addToBasket('เช่า: พูลวิลล่า ริมหาด')" class="btn-rent">🛒 สนใจเช่า</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table width="1075" border="0">
+    <tbody>
+      <tr>
+        <td align="center"><img src="Zone (1000 x 150 px).png" width="1069" height="150" alt="Footer"/></td>
+      </tr>
+    </tbody>
+  </table>
+
+</header>
+</center>
+</body>
+</html>

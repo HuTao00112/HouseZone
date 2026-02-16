@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HouseZone - Country Selection</title>
+<style>
+    body {
+        font-family: 'Sarabun', 'Segoe UI', Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+    }
+    table {
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    img {
+        display: block;
+        border-radius: 10px;
+    }
+    .nav-table {
+        background: none;
+        box-shadow: none;
+    }
+
+    .map-container {
+        position: relative;
+        width: 1000px; 
+        height: 500px;
+        background-image: url('Worldmap.png'); /* รูปแผนที่โลก */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 15px;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        margin: 0 auto;
+        background-color: #f4faff;
+    }
+
+    .map-pin {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        background-color: #E74C3C;
+        border: 2px solid #FFF;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: transform 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        z-index: 5;
+    }
+    .map-pin:hover {
+        transform: scale(1.3);
+        background-color: #C0392B;
+        z-index: 10;
+    }
+    
+    /* ตำแหน่งหมุด */
+    .pin-thailand { top: 48%; left: 74%; }
+    .pin-japan    { top: 38%; left: 86%; }
+    .pin-usa      { top: 35%; left: 18%; }
+    .pin-uk       { top: 26%; left: 47%; }
+
+    /* ส่วนแสดงรายการที่ซ่อนอยู่ */
+    .country-section {
+        display: none; /* ซ่อนไว้ก่อน */
+        animation: fadeIn 0.5s ease;
+    }
+    .country-header {
+        color: white;
+        padding: 15px;
+        font-size: 24px;
+        border-radius: 10px 10px 0 0;
+        margin-top: 20px;
+    }
+    .house-item {
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+    }
+    .house-item:last-child {
+        border-bottom: none;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<script type="text/javascript">
+function MM_swapImgRestore() { var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc; }
+function MM_preloadImages() { var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array(); var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++) if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}} }
+function MM_findObj(n, d) { var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) { d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); if(!x && d.getElementById) x=d.getElementById(n); return x; }
+function MM_swapImage() { var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3) if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];} }
+
+// ฟังก์ชันสำหรับเลือกประเทศ
+function selectCountry(countryId) {
+    // 1. ซ่อนทุกอันก่อน
+    var sections = document.getElementsByClassName('country-section');
+    for(var i=0; i<sections.length; i++) {
+        sections[i].style.display = 'none';
+    }
+    // 2. แสดงอันที่เลือก
+    var selected = document.getElementById(countryId);
+    if(selected) {
+        selected.style.display = 'block';
+        // เลื่อนหน้าจอลงมา
+        setTimeout(function() {
+             selected.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }, 100);
+    }
+}
+</script>
+</head>
+
+<body background="Blue Pastel Minimalist Watercolor Background Instagram Story.png" onLoad="MM_preloadImages('../Downloads/Compressed/HOme Click/1.png','../Downloads/Compressed/HOme Click/2.png','../Downloads/Compressed/HOme Click/3.png','../Downloads/Compressed/HOme Click/4.png','../Downloads/Compressed/HOme Click/5.png','../Downloads/Compressed/HOme Click/6.png','../Downloads/Compressed/HOme Click/8.png','../Downloads/Compressed/HOme Click/9.png','../Downloads/Compressed/HOme Click/10.png')">
+
+<center>
+<header>
+    <table width="1000" border="1" style="border: none;">
+      <tbody>
+        <tr>
+          <td style="border: none;">
+             <img src="ประเทศ.png" width="1063" height="250" alt="Country Header" onerror="this.src='Zone.png'"/>
+             
+             <table width="1000" border="1" class="nav-table" style="border: none;">
+              <tbody>
+                <tr>
+                  <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../Downloads/Compressed/HOme Click/1.png',1)"><img src="../Downloads/Compressed/HOme/1.png" alt="Home" width="100" height="50" id="Image2"></a></td>
+                  <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../Downloads/Compressed/HOme Click/2.png',1)"><img src="../Downloads/Compressed/HOme/2.png" alt="Sell" width="100" height="50" id="Image3"></a></td>
+                  <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../Downloads/Compressed/HOme Click/3.png',1)"><img src="../Downloads/Compressed/HOme/3.png" alt="Buy" width="100" height="50" id="Image4"></a></td>
+                  <td><a href="Rent.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','../Downloads/Compressed/HOme Click/4.png',1)"><img src="../Downloads/Compressed/HOme/4.png" alt="Rent" width="100" height="50" id="Image5"></a></td>
+                  <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../Downloads/Compressed/HOme Click/5.png',1)"><img src="../Downloads/Compressed/HOme/5.png" alt="Data" width="100" height="50" id="Image11"></a></td>
+                  <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../Downloads/Compressed/HOme Click/6.png',1)"><img src="../Downloads/Compressed/HOme/6.png" alt="Basket" width="100" height="50" id="Image6"></a></td>
+                  
+                  <td><img src="../Downloads/Compressed/HOme Click/7.png" width="100" height="50" alt="Country Active"/></td>
+                  
+                  <td><a href="Province.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image8','','../Downloads/Compressed/HOme Click/8.png',1)"><img src="../Downloads/Compressed/HOme/8.png" alt="Province" width="100" height="50" id="Image8"></a></td>
+                  <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','../Downloads/Compressed/HOme Click/11.png',1)"><img src="../Downloads/Compressed/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
+                  <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../Downloads/Compressed/HOme Click/10.png',1)"><img src="../Downloads/Compressed/HOme/10.png" alt="Payment" width="100" height="50" id="Image10"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table width="1070" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td align="center" style="padding: 20px;">
+                    <h2 style="color: #4677EE;">เลือกประเทศที่ต้องการค้นหาบ้าน</h2>
+                    <p>คลิกที่หมุดบนแผนที่เพื่อดูรายชื่อโครงการ</p>
+                    
+                    <div class="map-container">
+                        <div class="map-pin pin-thailand" onclick="selectCountry('th-list')">TH</div>
+                        <div class="map-pin pin-japan" onclick="selectCountry('jp-list')">JP</div>
+                        <div class="map-pin pin-usa" onclick="selectCountry('us-list')">US</div>
+                        <div class="map-pin pin-uk" onclick="selectCountry('uk-list')">UK</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td width="1061">
+                    <div id="th-list" class="country-section">
+                        <table width="100%" border="0" cellpadding="10" bgcolor="#FFFFFF" style="border-radius: 10px;">
+                            <tr><td class="country-header" style="background-color: #4677EE;">รายการบ้านในประเทศไทย (Thailand)</td></tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>บ้าน Cozy Cottage</h3>
+                                    <p>ราคา: 2,590,000 บาท</p>
+                                    <p>ทำเล: เชียงใหม่</p>
+                                </td>
+                            </tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>ซีวิว พาราไดซ์</h3>
+                                    <p>ราคา: 12,500,000 บาท</p>
+                                    <p>ทำเล: ภูเก็ต</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="jp-list" class="country-section">
+                        <table width="100%" border="0" cellpadding="10" bgcolor="#FFFFFF" style="border-radius: 10px;">
+                            <tr><td class="country-header" style="background-color: #FF6B6B;">รายการบ้านในประเทศญี่ปุ่น (Japan)</td></tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>Tokyo Modern Loft</h3>
+                                    <p>ราคา: ¥45,000,000</p>
+                                    <p>ทำเล: ชินจูกุ, โตเกียว</p>
+                                </td>
+                            </tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>Kyoto Traditional House</h3>
+                                    <p>ราคา: ¥60,000,000</p>
+                                    <p>ทำเล: เกียวโต</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="us-list" class="country-section">
+                        <table width="100%" border="0" cellpadding="10" bgcolor="#FFFFFF" style="border-radius: 10px;">
+                            <tr><td class="country-header" style="background-color: #34495E;">รายการบ้านในสหรัฐอเมริกา (USA)</td></tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>California Beach House</h3>
+                                    <p>ราคา: $850,000</p>
+                                    <p>ทำเล: แอลเอ, แคลิฟอร์เนีย</p>
+                                </td>
+                            </tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>New York Apartment</h3>
+                                    <p>ราคา: $1,000,000</p>
+                                    <p>ทำเล: แมนฮัตตัน, นิวยอร์ก</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div id="uk-list" class="country-section">
+                        <table width="100%" border="0" cellpadding="10" bgcolor="#FFFFFF" style="border-radius: 10px;">
+                            <tr><td class="country-header" style="background-color: #8E44AD;">รายการบ้านในอังกฤษ (UK)</td></tr>
+                            <tr class="house-item">
+                                <td>
+                                    <h3>London Classic Flat</h3>
+                                    <p>ราคา: £500,000</p>
+                                    <p>ทำเล: ลอนดอน</p>
+                                </td>
+                            </tr>
+                             <tr class="house-item">
+                                <td>
+                                    <h3>English Countryside Cottage</h3>
+                                    <p>ราคา: £420,000</p>
+                                    <p>ทำเล: คอทส์วอลส์</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="1075" border="0">
+        <tbody>
+        <tr>
+            <td align="center"><img src="Zone (1000 x 150 px).png" width="1069" height="150" alt="Footer"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+</header>
+</center>
+</body>
+</html>

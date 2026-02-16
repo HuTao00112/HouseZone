@@ -1,0 +1,426 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HouseZone - Select Location</title>
+<style>
+    body {
+        font-family: 'Sarabun', 'Segoe UI', Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f4f8fb;
+    }
+    table {
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    img {
+        display: block;
+        border-radius: 10px;
+    }
+    .nav-table {
+        background: none;
+        box-shadow: none;
+    }
+
+    /* กล่องค้นหา (Step 1) */
+    .step-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin: 20px auto;
+        width: 90%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+    
+    .step-title {
+        font-size: 24px;
+        color: #4677EE;
+        margin-bottom: 20px;
+        font-weight: bold;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    select {
+        padding: 12px 20px;
+        font-size: 18px;
+        border-radius: 30px;
+        border: 2px solid #4677EE;
+        width: 350px;
+        font-family: 'Sarabun', sans-serif;
+        outline: none;
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    /* Grid แสดงจังหวัด (Step 2) */
+    .province-group {
+        display: none; 
+        animation: fadeIn 0.5s ease;
+    }
+    .province-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+    .province-card {
+        position: relative;
+        height: 200px;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+        background: #000;
+    }
+    .province-card:hover {
+        transform: scale(1.05);
+    }
+    .province-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+    .province-card:hover img {
+        opacity: 1;
+    }
+    .province-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    /* รายการบ้าน (Step 3) - ปรับปรุงใหม่ ไม่มีรูป */
+    .house-list-section {
+        display: none;
+        animation: slideUp 0.5s ease;
+        margin-top: 20px;
+    }
+    .section-header {
+        background-color: #4677EE;
+        color: white;
+        padding: 15px;
+        font-size: 22px;
+        border-radius: 10px 10px 0 0;
+    }
+    .house-table {
+        width: 100%;
+        background: white;
+        border-radius: 0 0 10px 10px;
+    }
+    /* เพิ่มคลาสสำหรับแถวรายการบ้าน */
+    .house-item {
+        border-bottom: 1px solid #eee;
+    }
+    .house-item:last-child {
+        border-bottom: none;
+    }
+    .house-item h3 {
+        margin: 0 0 5px 0;
+        color: #333;
+    }
+    .house-item p {
+        margin: 0;
+        color: #666;
+        font-size: 16px;
+    }
+    
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<script type="text/javascript">
+function MM_swapImgRestore() { var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc; }
+function MM_preloadImages() { var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array(); var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++) if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}} }
+function MM_findObj(n, d) { var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) { d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); if(!x && d.getElementById) x=d.getElementById(n); return x; }
+function MM_swapImage() { var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3) if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];} }
+
+// ฟังก์ชันเลือกประเทศ
+function selectCountry() {
+    var countryVal = document.getElementById("countrySelect").value;
+    
+    var groups = document.getElementsByClassName('province-group');
+    for(var i=0; i<groups.length; i++) {
+        groups[i].style.display = 'none';
+    }
+    
+    hideAllHouses();
+
+    if(countryVal) {
+        document.getElementById('group-' + countryVal).style.display = 'block';
+    }
+}
+
+// ฟังก์ชันเลือกจังหวัด
+function showHouses(listId) {
+    hideAllHouses();
+    var selectedList = document.getElementById(listId);
+    if(selectedList) {
+        selectedList.style.display = 'block';
+        selectedList.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+
+function hideAllHouses() {
+    var lists = document.getElementsByClassName('house-list-section');
+    for(var i=0; i<lists.length; i++) {
+        lists[i].style.display = 'none';
+    }
+}
+</script>
+</head>
+
+<body onLoad="MM_preloadImages('../Downloads/Compressed/HOme Click/1.png','../Downloads/Compressed/HOme Click/2.png','../Downloads/Compressed/HOme Click/3.png','../Downloads/Compressed/HOme Click/4.png','../Downloads/Compressed/HOme Click/5.png','../Downloads/Compressed/HOme Click/6.png','../Downloads/Compressed/HOme Click/7.png','../Downloads/Compressed/HOme Click/9.png','../Downloads/Compressed/HOme Click/10.png')">
+
+<center>
+<header>
+    <table width="1000" border="1" style="border: none;">
+      <tbody>
+        <tr>
+          <td style="border: none;">
+             <img src="จังหวัด.png" width="1063" height="250" alt="Province Header" onerror="this.src='Zone.png'"/>
+             <table width="1000" border="1" class="nav-table" style="border: none;">
+              <tbody>
+                <tr>
+                  <td><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','../Downloads/Compressed/HOme Click/1.png',1)"><img src="../Downloads/Compressed/HOme/1.png" alt="Home" width="100" height="50" id="Image2"></a></td>
+                  <td><a href="Sell.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','../Downloads/Compressed/HOme Click/2.png',1)"><img src="../Downloads/Compressed/HOme/2.png" alt="Sell" width="100" height="50" id="Image3"></a></td>
+                  <td><a href="Buy.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','../Downloads/Compressed/HOme Click/3.png',1)"><img src="../Downloads/Compressed/HOme/3.png" alt="Buy" width="100" height="50" id="Image4"></a></td>
+                  <td><a href="Rent.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','../Downloads/Compressed/HOme Click/4.png',1)"><img src="../Downloads/Compressed/HOme/4.png" alt="Rent" width="100" height="50" id="Image5"></a></td>
+                  <td><a href="Data.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image11','','../Downloads/Compressed/HOme Click/5.png',1)"><img src="../Downloads/Compressed/HOme/5.png" alt="Data" width="100" height="50" id="Image11"></a></td>
+                  <td><a href="Basket.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image6','','../Downloads/Compressed/HOme Click/6.png',1)"><img src="../Downloads/Compressed/HOme/6.png" alt="Basket" width="100" height="50" id="Image6"></a></td>
+                  <td><a href="Country.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image7','','../Downloads/Compressed/HOme Click/7.png',1)"><img src="../Downloads/Compressed/HOme/7.png" alt="Country" width="100" height="50" id="Image7"></a></td>
+                  
+                  <td><img src="../Downloads/Compressed/HOme Click/8.png" width="100" height="50" alt="Province Active"/></td>
+                  
+                  <td><a href="Login.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image16','','../Downloads/Compressed/HOme Click/11.png',1)"><img src="../Downloads/Compressed/HOme/11.png" alt="" width="100" height="50" id="Image16"></a></td>
+                  <td><a href="Payment.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','../Downloads/Compressed/HOme Click/10.png',1)"><img src="../Downloads/Compressed/HOme/10.png" alt="Payment" width="100" height="50" id="Image10"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table width="1070" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="step-container">
+                        <div class="step-title">เลือกประเทศ</div><br>
+                        <select id="countrySelect" onchange="selectCountry()">
+                            <option value="">-- กรุณาเลือกประเทศ --</option>
+                            <option value="th">ประเทศไทย (Thailand)</option>
+                            <option value="jp">ญี่ปุ่น (Japan)</option>
+                            <option value="uk">อังกฤษ (UK)</option>
+                            <option value="us">สหรัฐอเมริกา (USA)</option>
+                        </select>
+                    </div>
+
+                    <div id="group-th" class="province-group">
+                        <h2 style="color: #4677EE; padding-left: 20px;">เลือกจังหวัดในประเทศไทย</h2>
+                        <div class="province-grid">
+                            <div class="province-card" onclick="showHouses('list-bkk')">
+                                <img src="bkk.jpg" alt="Bangkok">
+                                <div class="province-name">กรุงเทพฯ</div>
+                            </div>
+                            <div class="province-card" onclick="showHouses('list-cm')">
+                                <img src="chanmai.jpg" alt="Chiang Mai">
+                                <div class="province-name">เชียงใหม่</div>
+                            </div>
+                            <div class="province-card" onclick="showHouses('list-phuket')">
+                                <img src="phuket.jpg" alt="Phuket">
+                                <div class="province-name">ภูเก็ต</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="group-jp" class="province-group">
+                        <h2 style="color: #FF6B6B; padding-left: 20px;">เลือกเมืองในญี่ปุ่น</h2>
+                        <div class="province-grid">
+                            <div class="province-card" onclick="showHouses('list-tokyo')">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/640px-Skyscrapers_of_Shinjuku_2009_January.jpg" alt="Tokyo">
+                                <div class="province-name">Tokyo (โตเกียว)</div>
+                            </div>
+                            <div class="province-card" onclick="showHouses('list-kyoto')">
+                                <img src="kt.jpg" alt="Kyoto">
+                                <div class="province-name">Kyoto (เกียวโต)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="group-uk" class="province-group">
+                        <h2 style="color: #8E44AD; padding-left: 20px;">เลือกเมืองในอังกฤษ</h2>
+                        <div class="province-grid">
+                            <div class="province-card" onclick="showHouses('list-london')">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/London_Montage_L.jpg/640px-London_Montage_L.jpg" alt="London">
+                                <div class="province-name">London</div>
+                            </div>
+                            <div class="province-card" onclick="showHouses('list-cotswolds')">
+                                <img src="cotswold.jpg" alt="Cotswolds">
+                                <div class="province-name">Cotswolds</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="group-us" class="province-group">
+                        <h2 style="color: #34495E; padding-left: 20px;">เลือกรัฐในสหรัฐอเมริกา</h2>
+                        <div class="province-grid">
+                            <div class="province-card" onclick="showHouses('list-la')">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg/640px-Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg" alt="LA">
+                                <div class="province-name">California (LA)</div>
+                            </div>
+                            <div class="province-card" onclick="showHouses('list-ny')">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg/640px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg" alt="NY">
+                                <div class="province-name">New York</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="list-bkk" class="house-list-section">
+                        <div class="section-header">อสังหาริมทรัพย์: กรุงเทพมหานคร</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>เดอะ แกรนด์ โมเดิร์น (บางนา)</h3>
+                                    <p>ราคา: ฿8,900,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-cm" class="house-list-section">
+                        <div class="section-header">อสังหาริมทรัพย์: เชียงใหม่</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>บ้าน Cozy Cottage (แม่ริม)</h3>
+                                    <p>ราคา: ฿2,590,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-phuket" class="house-list-section">
+                        <div class="section-header">อสังหาริมทรัพย์: ภูเก็ต</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>ซีวิว พาราไดซ์ (ราไวย์)</h3>
+                                    <p>ราคา: ฿12,500,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-tokyo" class="house-list-section">
+                        <div class="section-header" style="background:#FF6B6B;">อสังหาริมทรัพย์: Tokyo</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>Tokyo Modern Loft</h3>
+                                    <p>ราคา: ¥45,000,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-kyoto" class="house-list-section">
+                        <div class="section-header" style="background:#FF6B6B;">อสังหาริมทรัพย์: Kyoto</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>Kyoto Traditional House</h3>
+                                    <p>ราคา: ¥60,000,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-london" class="house-list-section">
+                        <div class="section-header" style="background:#8E44AD;">อสังหาริมทรัพย์: London</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>London Classic Flat</h3>
+                                    <p>ราคา: £500,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-cotswolds" class="house-list-section">
+                        <div class="section-header" style="background:#8E44AD;">อสังหาริมทรัพย์: Cotswolds</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>English Countryside Cottage</h3>
+                                    <p>ราคา: £420,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-la" class="house-list-section">
+                        <div class="section-header" style="background:#34495E;">อสังหาริมทรัพย์: California</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>California Beach House</h3>
+                                    <p>ราคา: $850,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="list-ny" class="house-list-section">
+                        <div class="section-header" style="background:#34495E;">อสังหาริมทรัพย์: New York</div>
+                        <table class="house-table" cellpadding="20">
+                            <tr class="house-item">
+                                <td>
+                                    <h3>New York Apartment</h3>
+                                    <p>ราคา: $1,000,000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="1075" border="0">
+        <tbody>
+        <tr>
+            <td align="center"><img src="Zone (1000 x 150 px).png" width="1069" height="150" alt="Footer"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+</header>
+</center>
+</body>
+</html>
